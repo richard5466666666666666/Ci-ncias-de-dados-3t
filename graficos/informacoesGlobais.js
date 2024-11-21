@@ -3,11 +3,13 @@ const url = 'https://raw.githubusercontent.com/guilhermeonrails/api/main/dados-g
 async function vizualizarInformacoesGlobais() {
     const res = await fetch(url)
     const dados = await res.json()
-    const pessoasConectadas = (dados.total_pessoas_conectadas / 1e9)
-    const pessoasNoMundo = (dados.total_pessoas_mundo / 1e9)
-    const horas = parseInt(dados.tempo_medio)
-    const minutos = Math.round((dados.tempo_medio - horas) * 100)
-    const porcentagemConectada = ((pessoasConectadas / pessoasNoMundo ) * 100).toFixed(2)
+
+    // Atualizando os dados com as redes sociais mais populares
+    const pessoasConectadas = 5.04 // bilhões (aproximadamente)
+    const pessoasNoMundo = 8.00 // bilhões (aproximadamente)
+    const horas = 2 // Média de horas passadas em redes sociais
+    const minutos = 30 // Média de minutos
+    const porcentagemConectada = ((pessoasConectadas / pessoasNoMundo) * 100).toFixed(2)
 
     const paragrafo = document.createElement('p')
     paragrafo.classList.add('graficos-container__texto')
@@ -18,3 +20,4 @@ async function vizualizarInformacoesGlobais() {
 }
 
 vizualizarInformacoesGlobais()
+
